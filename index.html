@@ -16,7 +16,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Philip Rettig</title>
+  <title>UAKarta</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Leaflet CSS -->
@@ -84,21 +84,19 @@
 
   <script>
 
-    // 1. Create map FIRST
     var map = L.map('map', {
       center: [63, 20],
       zoom: 5,
       maxZoom: 12,
-      minZoom: 4
+      minZoom: 5
     });
 
-    // 2. Add OpenStreetMap tile layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: 'OpenStreetMap'
     }).addTo(map);
 
 
-    // 3. Load GeoJSON data and add to map
+    //Load GeoJSON data and add to map
     const regionColors = {
       "Region Nord": "#38B879",
       "Region Mitt": "#f8971d",
@@ -132,9 +130,9 @@
         }
       },
       // file: "src/RegionMitt.geojson" },
-      { name: "Region Öst", file: "src/Region Öst.geojson" },
-      { name: "Region Väst", file: "src/Region Väst.geojson" },
-      { name: "Region Syd", file: "src/Region Syd.geojson" }
+      //{ name: "Region Öst", file: "src/Region Öst.geojson" },
+      //{ name: "Region Väst", file: "src/Region Väst.geojson" },
+      //{ name: "Region Syd", file: "src/Region Syd.geojson" }
     ];
 
     const overviewLayer = L.featureGroup().addTo(map);
@@ -288,7 +286,7 @@
 
           map.fitBounds(activeDetailLayer.getBounds());
         });
-        // ---------- PRELOAD MUNICIPALITIES (for Lokalavdelningar mode) ----------
+        //RELOAD
         const muniLayer = L.geoJSON(data, {
 
           style: function (feature) {
@@ -331,7 +329,7 @@
         });
 
         municipalitiesLayer.addLayer(muniLayer);
-        // -------------------------------------------------------------------------
+
         overviewLayer.addLayer(regionLayer);
 
       });
@@ -430,7 +428,6 @@
         }
 
         municipalitiesLayer.addTo(map);
-        // NO zoom change
 
         currentMode = "lokal";
         updateButtonStyles();
@@ -445,6 +442,7 @@
 
     resetControl.addTo(map);
   </script>
+<p>För förslag på förbättringar eller buggar. Kontakta Philip Rettig på Slack eller använd GitHub Issues: <a href="https://github.com/pilihpr/UAKarta/issues" target="_blank">https://github.com/pilihpr/UAKarta/issues</a></p>
 </body>
 
 </html>
